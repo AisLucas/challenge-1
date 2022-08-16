@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NCRYPT</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="header container">
+        <img class="header_img" src="a_logo.png" alt="Loga da Alura,sendo um a minusculo">
+        <p>Bem Vindo ao Ncrypt , um projeto de segurança !</p>
+    </header>
+
+    <main class="main container">
+
+        <div class="div_left">
+            <textarea class="input_type" placeholder="Digite sua mensagem" type="text" id="textoEntrada" ></textarea>
+            <p class="comentario">Apenas letras minúsculas e sem acentos.</p>
+            <div class="div_buttons">
+                <button onclick="criptografar()" class="button_cripto">Criptografar</button>
+                <button onclick="descriptografar()" class="button_descripto">Descriptografar</button>
+            </div>
+        </div>
+
+        <div class="div_right">
+
+            <div class="bloco_branco">
+
+                <div id="resultado" class="resultado">
+                    <p id="textoALterado">Feito</p>
+                    <button onclick="copiar()" class="button_copiar">Copiar</button>
+                </div>
+
+                <div id="inicial" class="inicial">
+                    <img class="ilustracao_div_right" src="segurança.png"
+                        alt="Imagem desenhada de uma figura feminina segurando um envelope lacrado">
+                    <p class="titulo">Nenhuma mensagem encontrada.</p>
+                    <br><br>
+                    <p>Digite o texto que você deseja criptografar ou descriptografar.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer container">
+        <p>Desenvolvido por Lucas Ais Menegueço</p>
+        <br>
+        <a href="mailto:lucass.11.ais@gmail.com">Contato</a>
+    </footer>
+
+    <script>
+        const resultado = document.getElementById("resultado");
+        const inicial = document.getElementById("inicial");
+
+        function trocaImagem() 
+        {
+            if (inicial.style.display == "flex") {
+                resultado.style.display = "flex";
+                inicial.style.display = "none";
+            } else {
+                resultado.style.display = "none";
+                inicial.style.display = "flex";
+            }
+        }
+
+        function criptografar()
+        {
+            var textoEntrada=document.getElementById("textoEntrada").value;
+            textocriptografado = textoEntrada
+            .replaceAll("e","enter")
+            .replaceAll("i","imes")
+            .replaceAll("a","ai")
+            .replaceAll("o","ober")
+            .replaceAll("u","ufat");
+            textoALterado.innerHTML = textocriptografado
+            trocaImagem();
+        }
+
+        function descriptografar()
+        {
+            var textoEntrada=document.getElementById("textoEntrada").value;
+            textocriptografado = textoEntrada
+            .replaceAll("enter","e")
+            .replaceAll("imes","i")
+            .replaceAll("ai","a")
+            .replaceAll("ober","o")
+            .replaceAll("ufat","u");
+            textoALterado.innerHTML = textocriptografado
+            trocaImagem();
+        }
+
+            function copiar()
+        {
+                var textoCopiado=document.getElementById("textoALterado").select();
+                document.execCommand("Copy");
+        }
+
+    </script>
+
+</body>
+
+</html>
